@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:  
+    tad.gitops.set/image: ".spec.template.spec.containers[0].image"
+    tad.gitops.get/image: ".spec.template.spec.containers[0].image"
+    tad.gitops.set/replicas: ".spec.replicas"
+    tad.gitops.get/replicas: ".spec.replicas" 
+  labels: 
+    app.kubernetes.io/instance: clueforge
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name:  clueforge
+    app.kubernetes.io/part-of: clueforge-gitops  
+  name: clueforge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance:  clueforge 
+  template:
+    metadata: 
+      labels:
+        app.kubernetes.io/instance:  clueforge
+    spec:
+      containers:
+      - image: quay.io/redhat-tssc/task-runner:1.7
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8081 
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 8081 
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 8081 
+        resources:
+          limits:
+            cpu: "1"
+            memory: 512Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi    
+        env:
+        - name: GIT_REPO
+          value: https://github.com/rhads-cluster/clueforge-gitops
+      imagePullSecrets:
+        - name: tssc-image-registry-auth
