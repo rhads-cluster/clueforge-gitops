@@ -12,5 +12,5 @@ spec:
   template:
     spec:
       containers:
-        - image: quay.io/rhads-jowilkin/clueforge:339c855f4060c42e8326f2887fce66504e0239d1@sha256:2c0465e120f780c631efea0c1295fbf5737620641c0a4908e34015132f3542df
+        - image: quay.io/rhads-jowilkin/clueforge:2f56f161179fe270f71ad5e842df714934f52a47@sha256:0994d503fe4d2efc761d042fb4497ab57a3cf56c40deff97fbbb38f9324255e6
           name: container-image
