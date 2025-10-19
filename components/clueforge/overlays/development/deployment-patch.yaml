@@ -14,3 +14,10 @@ spec:
       containers:
         - image: quay.io/rhads-jowilkin/clueforge:2f56f161179fe270f71ad5e842df714934f52a47@sha256:0994d503fe4d2efc761d042fb4497ab57a3cf56c40deff97fbbb38f9324255e6
           name: container-image
+          volumeMounts:
+            - name: repo-workspace-volume
+              mountPath: /opt/app-root/src/workspace
+      volumes:
+        - name: repo-workspace-volume
+          persistentVolumeClaim:
+            claimName: clueforge-repo-workspace
