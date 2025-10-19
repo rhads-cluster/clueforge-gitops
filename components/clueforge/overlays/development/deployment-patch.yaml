@@ -11,6 +11,8 @@ spec:
   replicas: 1
   template:
     spec:
+      imagePullSecrets:
+        - name: redhat-registry-auth
       initContainers:
         - name: repo-cloner
           image: registry.redhat.io/rhel9/git:latest
