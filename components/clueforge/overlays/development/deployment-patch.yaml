@@ -13,7 +13,7 @@ spec:
     spec:
       initContainers:
         - name: repo-cloner
-          image: quay.io/alpine/git:latest
+          image: bitnami/git:2.42
           securityContext:
             runAsUser: 1000930000
             fsGroup: 1000930000
