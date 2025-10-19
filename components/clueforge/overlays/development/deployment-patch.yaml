@@ -15,8 +15,8 @@ spec:
         - name: repo-cloner
           image: registry.redhat.io/rhel9/git:latest
           securityContext:
-            runAsUser: 1001
-            fsGroup: 1001
+            runAsUser: 1000930000
+            fsGroup: 1000930000
           command: ['sh', '-c']
           args:
             - |
