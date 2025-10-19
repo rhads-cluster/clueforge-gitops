@@ -15,8 +15,8 @@ spec:
         - name: repo-cloner
           image: alpine/git:latest
           securityContext:
-            runAsUser: 1000970000
-            fsGroup: 1000970000
+            runAsUser: 1001020000
+            fsGroup: 1001020000
           command: ['sh', '-c']
           args:
             - |
