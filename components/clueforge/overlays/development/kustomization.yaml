@@ -4,4 +4,4 @@ patchesStrategicMerge:
   - deployment-patch.yaml
 resources:
   - ../../base
-  - pvc-repo-workspace.yaml
+#  - pvc-repo-workspace.yaml
